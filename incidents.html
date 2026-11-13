@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Support Hub: Инциденты</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">Support Hub</div>
+    <nav>
+      <a href="index.html">📊 Панель</a>
+      <a href="deployments.html">🚀 Внедрения</a>
+      <a href="incidents.html" class="active">🧯 Инциденты</a>
+      <a href="maintenance.html">🛠 Заявки</a>
+      <a href="releases.html">📦 Релизы</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1>Инциденты</h1>
+      <div>
+        <span id="currentVersion">v1.2.1</span>
+        <button id="themeButton">🌓 Тема</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <form id="incidentForm" class="card">
+        <input id="title" placeholder="Описание инцидента">
+        <select id="priority">
+          <option value="critical">Критический (4 ч)</option>
+          <option value="high">Высокий (8 ч)</option>
+          <option value="medium" selected>Средний (24 ч)</option>
+          <option value="low">Низкий (72 ч)</option>
+        </select>
+        <button type="submit">➕ Создать инцидент</button>
+      </form>
+
+      <div class="card">
+        <div class="chips">
+          <span class="chip">Всего: <b id="cntAll">0</b></span>
+          <span class="chip">Новых: <b id="cntNew">0</b></span>
+          <span class="chip">В работе: <b id="cntProgress">0</b></span>
+          <span class="chip">Решённых: <b id="cntResolved">0</b></span>
+          <span class="chip warn">SLA нарушен: <b id="cntBreached">0</b></span>
+        </div>
+
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="🔍 Поиск по номеру или описанию">
+          <label for="statusFilter">Статус:</label>
+          <select id="statusFilter">
+            <option value="all">Все</option>
+            <option value="new">Новые</option>
+            <option value="in_progress">В работе</option>
+            <option value="resolved">Решённые</option>
+          </select>
+        </div>
+
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Описание</th><th>Приоритет</th><th>Статус</th><th>SLA</th><th>Срок</th><th>Действие</th></tr>
+          </thead>
+          <tbody id="incidentTable"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/incidents.js"></script>
+</body>
+</html>

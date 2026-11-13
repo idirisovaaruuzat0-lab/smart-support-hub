@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Support Hub: Заявки</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">Support Hub</div>
+    <nav>
+      <a href="index.html">📊 Панель</a>
+      <a href="deployments.html">🚀 Внедрения</a>
+      <a href="incidents.html">🧯 Инциденты</a>
+      <a href="maintenance.html" class="active">🛠 Заявки</a>
+      <a href="releases.html">📦 Релизы</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1>Заявки на изменения</h1>
+      <div>
+        <span id="currentVersion">v1.2.1</span>
+        <button id="themeButton">🌓 Тема</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <form id="requestForm" class="card">
+        <input id="reqTitle" placeholder="Что нужно изменить">
+        <select id="reqType">
+          <option value="corrective">Корректирующее (исправить ошибку)</option>
+          <option value="adaptive">Адаптивное (новая среда)</option>
+          <option value="perfective" selected>Совершенствующее (новая возможность)</option>
+          <option value="preventive">Профилактическое (заранее)</option>
+        </select>
+        <input id="reqVersion" placeholder="Целевая версия, например v1.3.0">
+        <button type="submit">➕ Создать заявку</button>
+      </form>
+
+      <div class="card">
+        <div class="chips">
+          <span class="chip">Корректирующих: <b id="cnt-corrective">0</b></span>
+          <span class="chip">Адаптивных: <b id="cnt-adaptive">0</b></span>
+          <span class="chip">Совершенствующих: <b id="cnt-perfective">0</b></span>
+          <span class="chip">Профилактических: <b id="cnt-preventive">0</b></span>
+        </div>
+
+        <div class="toolbar">
+          <label for="typeFilter">Вид:</label>
+          <select id="typeFilter">
+            <option value="all">Все виды</option>
+            <option value="corrective">Корректирующее</option>
+            <option value="adaptive">Адаптивное</option>
+            <option value="perfective">Совершенствующее</option>
+            <option value="preventive">Профилактическое</option>
+          </select>
+        </div>
+
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Название</th><th>Вид</th><th>Статус</th><th>Версия</th><th>Действие</th></tr>
+          </thead>
+          <tbody id="requestTable"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/maintenance.js"></script>
+</body>
+</html>

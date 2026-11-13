@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Support Hub: Панель</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">Support Hub</div>
+    <nav>
+      <a href="index.html" class="active">📊 Панель</a>
+      <a href="deployments.html">🚀 Внедрения</a>
+      <a href="incidents.html">🧯 Инциденты</a>
+      <a href="maintenance.html">🛠 Заявки</a>
+      <a href="releases.html">📦 Релизы</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1>Панель</h1>
+      <div>
+        <span id="currentVersion">v1.2.1</span>
+        <button id="themeButton">🌓 Тема</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="card hero">
+        <div class="wave">👋</div>
+        <div>
+          <h2 id="heroTitle">Привет!</h2>
+          <p id="heroText">Загружаем данные…</p>
+        </div>
+      </section>
+
+      <section class="kpi-grid">
+        <div class="card"><div class="kpi-label">🚀 Активных внедрений</div><div class="kpi-value" id="kpiDeployments">0</div></div>
+        <div class="card"><div class="kpi-label">🧯 Открытых инцидентов</div><div class="kpi-value" id="kpiIncidents">0</div></div>
+        <div class="card"><div class="kpi-label">⏱ SLA выполнен</div><div class="kpi-value" id="kpiSla">0%</div></div>
+        <div class="card"><div class="kpi-label">📦 Текущая версия</div><div class="kpi-value" id="kpiVersion">-</div></div>
+      </section>
+
+      <section class="charts">
+        <div class="card"><h3>Инциденты по приоритетам</h3><canvas id="priorityChart"></canvas></div>
+        <div class="card"><h3>Заявки по видам сопровождения</h3><canvas id="requestChart"></canvas></div>
+      </section>
+
+      <section class="card wide-chart">
+        <h3>Динамика инцидентов по дням</h3>
+        <canvas id="dayChart"></canvas>
+      </section>
+
+      <section class="card">
+        <h3>Последние инциденты</h3>
+        <table>
+          <thead><tr><th>ID</th><th>Описание</th><th>Приоритет</th><th>Статус</th><th>SLA</th></tr></thead>
+          <tbody id="recentIncidents"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

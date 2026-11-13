@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Support Hub: Внедрения</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">Support Hub</div>
+    <nav>
+      <a href="index.html">📊 Панель</a>
+      <a href="deployments.html" class="active">🚀 Внедрения</a>
+      <a href="incidents.html">🧯 Инциденты</a>
+      <a href="maintenance.html">🛠 Заявки</a>
+      <a href="releases.html">📦 Релизы</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1>Внедрения</h1>
+      <div>
+        <span id="currentVersion">v1.2.1</span>
+        <button id="themeButton">🌓 Тема</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <form id="deploymentForm" class="card">
+        <input id="client" placeholder="Заказчик">
+        <input id="product" placeholder="Продукт">
+        <select id="stage">
+          <option value="planning">Планирование</option>
+          <option value="setup">Настройка</option>
+          <option value="training">Обучение</option>
+          <option value="production">Эксплуатация</option>
+        </select>
+        <input id="owner" placeholder="Ответственный">
+        <input id="plannedDate" type="date">
+        <input id="done" type="number" min="0" placeholder="Сделано шагов">
+        <input id="total" type="number" min="1" placeholder="Всего шагов">
+        <button type="submit">➕ Добавить</button>
+      </form>
+
+      <div class="card">
+        <div class="chips">
+          <span class="chip">Всего: <b id="depTotal">0</b></span>
+          <span class="chip">Активных: <b id="depActive">0</b></span>
+          <span class="chip">Средняя готовность: <b id="depAvg">0%</b></span>
+        </div>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Заказчик</th><th>Продукт</th><th>Версия</th><th>Этап</th><th>Ответственный</th><th>Срок</th><th>Готовность</th><th>Действие</th></tr>
+          </thead>
+          <tbody id="deploymentTable"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/deployments.js"></script>
+</body>
+</html>

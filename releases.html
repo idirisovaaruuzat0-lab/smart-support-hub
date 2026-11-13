@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Support Hub: Релизы</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="logo">Support Hub</div>
+    <nav>
+      <a href="index.html">📊 Панель</a>
+      <a href="deployments.html">🚀 Внедрения</a>
+      <a href="incidents.html">🧯 Инциденты</a>
+      <a href="maintenance.html">🛠 Заявки</a>
+      <a href="releases.html" class="active">📦 Релизы</a>
+    </nav>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <h1>Релизы</h1>
+      <div>
+        <span id="currentVersion">v1.2.1</span>
+        <button id="themeButton">🌓 Тема</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="card">
+        <h3>Следующая версия</h3>
+        <p>Текущая: <b id="curVer"></b> → следующая: <b id="nextVer"></b></p>
+
+        <form id="releaseForm">
+          <select id="relLevel">
+            <option value="patch">patch (только исправления)</option>
+            <option value="minor">minor (новая совместимая возможность)</option>
+            <option value="major">major (несовместимые изменения)</option>
+          </select>
+          <textarea id="relChanges" placeholder="Изменения, по одному на строке"></textarea>
+          <button type="submit">📦 Выпустить релиз</button>
+          <button type="button" id="copyChangelog" class="btn-ghost">📋 Скопировать CHANGELOG</button>
+        </form>
+      </div>
+
+      <div id="releaseList"></div>
+    </main>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/releases.js"></script>
+</body>
+</html>
