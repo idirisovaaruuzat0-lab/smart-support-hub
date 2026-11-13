@@ -69,11 +69,22 @@ function startIncident(id) {
 
 function resolveIncident(id) {
   const item = incidents.find(incident => incident.id === id);
+
+  if (!item) return;
+
+  const confirmation = confirm(
+    "Вы действительно хотите решить инцидент " + id + "?"
+  );
+
+  if (!confirmation) return;
+
   item.status = "resolved";
   item.resolvedAt = new Date().toISOString();
+
   saveData("incidents", incidents);
   renderIncidents();
   confetti();
+
   toast("🎉 " + id + ": " + slaNames[getSlaState(item, settings)]);
 }
 
